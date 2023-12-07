@@ -57,8 +57,8 @@ def prepare_second_page(dna_seq):
         x=["A", "T", "G", "C"],
         y=utils.count_nucleotides(dna_seq),
         color=["A", "T", "G", "C"],
-        title="Title",
-        labels={"x": "X", "y": "Y"},
+        title="Zawartość poszczególnych nukleotydów",
+        labels={"x": "Nukleotydy", "y": "Ilość [%]"},
     )
     #pie chart function
     def create_pie_chart(dna_seq):

@@ -60,6 +60,16 @@ def prepare_second_page(dna_seq):
         title="Title",
         labels={"x": "X", "y": "Y"},
     )
+    #pie chart function
+    def create_pie_chart(dna_seq):
+        nucleotide_counts = utils.count_nucleotides(dna_seq)
+        fig = px.pie(
+            names=["A", "T", "G", "C"],
+            values=nucleotide_counts,
+            title="Nucleotide Distribution"
+        )
+        return fig
+
     table_ = utils.get_info_about_dna_seq(dna_seq)
     table = dmc.Table(
         verticalSpacing="sm",
@@ -67,6 +77,7 @@ def prepare_second_page(dna_seq):
         children=table_,
     )
     bar = dcc.Graph(figure=fig)
+    pie = dcc.Graph(figure=create_pie_chart(dna_seq))
     return [
         dmc.Center([reverse_complement_textarea, copy1_object]),
         dmc.Center([aminoacids_textarea]),
@@ -74,6 +85,8 @@ def prepare_second_page(dna_seq):
         table,
         spacer,
         bar,
+        spacer,
+        pie
     ]
 
 

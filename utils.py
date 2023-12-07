@@ -39,14 +39,14 @@ def is_dna(seq):
 def dna_complement(seq):
     seq = seq.upper()
     complement_dict = {"A": "T", "T": "A", "C": "G", "G": "C"}
-    complement_sequence = "".join(complement_dict[base] for base in seq[::-1])
+    complement_sequence = "".join(complement_dict[base] for base in seq)
     return complement_sequence
 
 
 def reverse_complement_dna(seq):
     seq = seq.upper()
     complement_dict = {"A": "T", "T": "A", "C": "G", "G": "C"}
-    reverse_complement_sequence = "".join(complement_dict[base] for base in seq[::-1])
+    reverse_complement_sequence = "".join(complement_dict[base] for base in seq)
     return reverse_complement_sequence
 
 

@@ -42,7 +42,7 @@ def analyse_dna(n, dna_seq):
 @callback(
     Output("copy1", "content"),
     Input("copy1", "n_clicks"),
-    State("reverse_complement", "value"),
+    State("Amino_acid", "value"),
 )
 def copy1(n, text):
     if text is None:
@@ -50,53 +50,30 @@ def copy1(n, text):
     return text
 
 
-@callback(
-    Output("copy2", "content"),
-    Input("copy2", "n_clicks"),
-    State("Amino_acid", "value"),
-)
-def copy2(n, text):
-    if text is None:
-        return "No text"
-    return text
-
-
 def prepare_second_page(dna_seq):
-    reverse_complement_textarea.value = utils.dna_complement(dna_seq)
+    reverse_complement_textarea.value = utils.reverse_complement_dna(dna_seq)
     aminoacids_textarea.value = utils.dna_to_amino_acids(dna_seq)
     fig = px.bar(
         x=["A", "T", "G", "C"],
         y=utils.count_nucleotides(dna_seq),
         color=["A", "T", "G", "C"],
-        title="Nucleotides content",
-        labels={"x": "Nucleotides", "y": "Count"},
+        title="Title",
+        labels={"x": "X", "y": "Y"},
     )
     table_ = utils.get_info_about_dna_seq(dna_seq)
     table = dmc.Table(
         verticalSpacing="sm",
         horizontalSpacing=10,
         children=table_,
-        striped=True,
-        highlightOnHover=True,
-        withBorder=True,
-        withColumnBorders=True,
     )
     bar = dcc.Graph(figure=fig)
     return [
         dmc.Center([reverse_complement_textarea, copy1_object]),
-        dmc.Center([aminoacids_textarea, copy2_object]),
+        dmc.Center([aminoacids_textarea]),
         spacer,
         table,
         spacer,
-        dmc.Paper(
-            [
-                bar,
-            ],
-            shadow="xl",
-            radius="xl",
-            withBorder=True,
-            p="xl",
-        ),
+        bar,
     ]
 
 

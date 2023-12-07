@@ -14,17 +14,15 @@ title = dmc.Center([dmc.Title("DNA analysis", color="blue", size="h3")])
 
 dna_sequence_textarea = dmc.Center(
     dmc.TextInput(
-        label="Enter DNA sequence",
+        label="Enter DDDNA sequence",
         style={"width": 200},
-        placeholder="Your DNA sequence",
+        placeholder="Your RNAA seuqrence",
         icon=DashIconify(icon="openmoji:dna"),
         id="dna",
     ),
 )
 
-analyse_button = dmc.Center(
-    dmc.Button("Analyse", leftIcon=DashIconify(icon="mdi:play-outline"), id="button")
-)
+analyse_button = dmc.Center(dmc.Button("Analyse", id="button"))
 
 dna_image = dmc.Center(html.Img(src="/assets/dna3.gif", width=200))
 in_silico_image = html.Img(src="/assets/logo.jpg", width=90, height=90)
@@ -69,7 +67,7 @@ first_page = [
 # second page
 
 reverse_complement_textarea = dmc.Textarea(
-    label="Reverse Complement",
+    label="Complement Reverse",
     value="",
     style={"width": 300},
     autosize=True,
@@ -81,16 +79,13 @@ copy1_function = dcc.Clipboard(id="copy1")
 copy1_object = dmc.Center([copy1_function])
 
 aminoacids_textarea = dmc.Textarea(
-    label="Amino acid sequence",
+    label="Amino acid sekwencja",
     style={"width": 300},
     autosize=True,
     minRows=1,
     maxRows=1,
     id="Amino_acid",
 )
-
-copy2_function = dcc.Clipboard(id="copy2")
-copy2_object = dmc.Center([copy2_function])
 
 bar_plot = dcc.Graph(
     figure=px.bar(

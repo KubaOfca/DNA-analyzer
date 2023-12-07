@@ -10,13 +10,13 @@ from dash import html
 import re
 import utils
 
-title = dmc.Center([dmc.Title("DNA analysis", color="blue", size="h3")])
+title = dmc.Center([dmc.Title("DNA analysis tool", color="blue", size="h3")])
 
 dna_sequence_textarea = dmc.Center(
     dmc.TextInput(
-        label="Enter DDDNA sequence",
+        label="Enter DNA sequence",
         style={"width": 200},
-        placeholder="Your RNAA seuqrence",
+        placeholder="Your RNA seuqrence",
         icon=DashIconify(icon="openmoji:dna"),
         id="dna",
     ),
@@ -79,7 +79,7 @@ copy1_function = dcc.Clipboard(id="copy1")
 copy1_object = dmc.Center([copy1_function])
 
 aminoacids_textarea = dmc.Textarea(
-    label="Amino acid sekwencja",
+    label="Amino acid sequence",
     style={"width": 300},
     autosize=True,
     minRows=1,
